@@ -18,5 +18,8 @@ e. and you can call the api [/api/v1/messages] manually or use the cronjob shell
 
 f. the consumer stdout will print the result.
 
+# DB Schema
+refer to [db schema](https://github.com/cxytz01/abcdefg/blob/main/producer/pkg/models/models.go)
+
 # Deployment diagram
 ![deployment](./assets/deployment.svg)

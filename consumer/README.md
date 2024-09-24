@@ -12,5 +12,5 @@ The consumer agent is a single process/thread/routine, if you want more throughp
 
 I prefer to use single process/thread/routine with multiple replicas rather than multiple processes/threads/routines.
 
-## tools
-you could start/stop a bunch of consumer agents by using the tool/* scripts.
+## Tools
+you could start/stop a bunch of consumer agents by using the [tool/* scripts](https://github.com/cxytz01/abcdefg/tree/main/consumer/tools).
