@@ -1,0 +1,11 @@
+title = "producer"
+
+[producer]
+    listen = ":7005"
+    pg = "postgresql://user:password@ip:port/dbname?sslmode=disable"
+    csvstore = "/tmp/csv"
+
+    [producer.kafka]
+        broker-list = "localhost:9092,localhost:9093,..."
+        topic = "test"
+        ack = 0

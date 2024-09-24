@@ -1,0 +1,119 @@
+basePath: /
+definitions:
+  producer_pkg_utils.ResponseCode:
+    enum:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    type: integer
+    x-enum-varnames:
+    - CodeOk
+    - CodeUnKnownReasonErr
+    - CodeError
+    - CodeInternalServer
+    - CodeBadRequest
+    - CodeNotFound
+    - CodeUserNotFound
+    - CodeForbidSendEmail
+  producer_pkg_utils.ResponseWithRequestId:
+    properties:
+      code:
+        $ref: '#/definitions/producer_pkg_utils.ResponseCode'
+      data: {}
+      message:
+        type: string
+      request_id:
+        type: string
+    type: object
+host: 127.0.0.1:7005
+info:
+  contact:
+    email: aaaaa
+    name: abcdefg
+  description: abcdefg producer api backend
+  termsOfService: http://swagger.io/terms/
+  title: abcdefg producer api backend
+  version: "1.0"
+paths:
+  /api/v1/campaign:
+    post:
+      consumes:
+      - multipart/form-data
+      description: create campaign
+      parameters:
+      - example: 'Hello {{.name}}, thank you for shopping with us! Please confirm
+          your phone number '
+        in: query
+        name: message_template
+        type: string
+      - example: 2024-09-24T16:57:00+08:00 defined by RFC3339, section5.6
+        format: date-time
+        in: query
+        name: schedule_time
+        type: string
+      - description: CSV file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/producer_pkg_utils.ResponseWithRequestId'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/producer_pkg_utils.ResponseWithRequestId'
+      tags:
+      - Producer-External-API-V1
+  /api/v1/messages:
+    post:
+      description: dispatch suitable messages to kafka
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/producer_pkg_utils.ResponseWithRequestId'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/producer_pkg_utils.ResponseWithRequestId'
+      tags:
+      - Producer-Internal-API-V1
+  /api/v1/ping:
+    get:
+      consumes:
+      - application/json
+      - application/json
+      description: Healthy examination
+      produces:
+      - application/json
+      - application/json
+      responses:
+        "200":
+          description: pong
+          schema:
+            type: string
+        "500":
+          description: error:...
+          schema:
+            type: string
+      tags:
+      - Sys
+swagger: "2.0"

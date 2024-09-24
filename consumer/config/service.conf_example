@@ -1,0 +1,10 @@
+title = "consumer"
+
+[consumer]
+    pg = "postgresql://user:password@ip:port/dbname?sslmode=disable"
+
+    [consumer.kafka]
+        bootstrap-server = "localhost:9092,localhost:9093,..."
+        consumer-group = "group-1"
+        topic = "test"
+        ack = 0
