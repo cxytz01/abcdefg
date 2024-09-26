@@ -6,7 +6,7 @@ help:
 	@echo "  push images to docker hub"
 
 swag:
-	swag init --parseDependency --parseInternal -g cmd/producer/main.go
+	swag init -g cmd/producer/main.go
 
 binary:
 	go build -o bin/producer cmd/producer/main.go

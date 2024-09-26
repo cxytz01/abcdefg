@@ -36,7 +36,6 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "example": "Hello {{.name}}, thank you for shopping with us! Please confirm your phone number ",
                         "name": "message_template",
                         "in": "query"
                     },
@@ -62,13 +61,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/producer_pkg_utils.ResponseWithRequestId"
+                            "$ref": "#/definitions/utils.ResponseWithRequestId"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/producer_pkg_utils.ResponseWithRequestId"
+                            "$ref": "#/definitions/utils.ResponseWithRequestId"
                         }
                     }
                 }
@@ -91,13 +90,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/producer_pkg_utils.ResponseWithRequestId"
+                            "$ref": "#/definitions/utils.ResponseWithRequestId"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/producer_pkg_utils.ResponseWithRequestId"
+                            "$ref": "#/definitions/utils.ResponseWithRequestId"
                         }
                     }
                 }
@@ -135,7 +134,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "producer_pkg_utils.ResponseCode": {
+        "utils.ResponseCode": {
             "type": "integer",
             "enum": [
                 0,
@@ -158,11 +157,11 @@ const docTemplate = `{
                 "CodeForbidSendEmail"
             ]
         },
-        "producer_pkg_utils.ResponseWithRequestId": {
+        "utils.ResponseWithRequestId": {
             "type": "object",
             "properties": {
                 "code": {
-                    "$ref": "#/definitions/producer_pkg_utils.ResponseCode"
+                    "$ref": "#/definitions/utils.ResponseCode"
                 },
                 "data": {},
                 "message": {
